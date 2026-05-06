@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink:    oklch(0.18 0.012 60);
+  --color-ink2:   oklch(0.28 0.012 60);
+  --color-paper:  oklch(0.972 0.008 82);
+  --color-paper2: oklch(0.945 0.012 82);
+  --color-paper3: oklch(0.91 0.014 82);
+  --color-brass:  oklch(0.72 0.092 75);
+  --color-brassd: oklch(0.58 0.085 70);
+  --color-rule:   oklch(0.86 0.01 80);
+  --color-mute:   oklch(0.46 0.012 70);
+
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: Newsreader, ui-serif, Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html, body { background: oklch(0.972 0.008 82); color: oklch(0.18 0.012 60); }
+html { scroll-behavior: smooth; }
+body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+
+.font-display { font-family: 'Newsreader', Georgia, serif; font-optical-sizing: auto; }
+.label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+.hr-thin { border-top: 1px solid oklch(0.86 0.01 80); }
+
+.dropcap::first-letter {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  float: left;
+  font-size: 4.4em;
+  line-height: 0.86;
+  padding: 0.08em 0.12em 0 0;
+  color: oklch(0.18 0.012 60);
+}
+
+[data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+[data-reveal].in { opacity: 1; transform: translateY(0); }
+
+@keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.drift { animation: drift 60s linear infinite; }
+
+@keyframes pulse-ring { 0%,100% { opacity: .9; } 50% { opacity: .55; } }
+.pulse-ring { animation: pulse-ring 4.5s ease-in-out infinite; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.figure { font-feature-settings: "lnum","tnum"; }
+
+.ulink { background-image: linear-gradient(currentColor, currentColor); background-size: 100% 1px; background-position: 0 100%; background-repeat: no-repeat; padding-bottom: 2px; }
+.ulink-hover { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px; background-position: 0 100%; background-repeat: no-repeat; padding-bottom: 2px; transition: background-size .4s ease; }
+.ulink-hover:hover { background-size: 100% 1px; }
+
+::selection { background: oklch(0.72 0.092 75 / .35); }
+
+.field {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid oklch(0.86 0.01 80);
+  padding: 14px 0;
+  width: 100%;
+  font-family: 'Geist', sans-serif;
+  color: inherit;
+  outline: none;
+  transition: border-color .25s ease;
+}
+.field:focus { border-bottom-color: currentColor; }
+.field::placeholder { color: color-mix(in oklch, currentColor 40%, transparent); }
+
+.stripe-bg {
+  background-image: repeating-linear-gradient(45deg, oklch(0.91 0.014 82) 0 2px, transparent 2px 14px);
+}
+
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  background: oklch(0.18 0.012 60);
+  color: oklch(0.972 0.008 82);
+  border-radius: 999px;
+  font-size: 14px;
+  transition: background .25s ease, transform .25s ease;
+}
+.btn-primary:hover { background: oklch(0.10 0.012 60); }
+.btn-primary .arrow { transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 20px; border: 1px solid oklch(0.86 0.01 80);
+  border-radius: 999px; font-size: 14px;
+  transition: background .25s ease, border-color .25s ease;
+}
+.btn-ghost:hover { background: oklch(0.945 0.012 82); border-color: oklch(0.18 0.012 60); }
+
+.card-svc { transition: background .35s ease, transform .35s ease; }
+.card-svc:hover { background: oklch(0.945 0.012 82); }
+.card-svc:hover .arrow-tiny { transform: translate(2px,-2px); }
+.arrow-tiny { transition: transform .35s ease; }
+
+.nav-blur { backdrop-filter: saturate(140%) blur(10px); background: oklch(0.972 0.008 82 / 0.78); }
+
+.grid-bg {
+  background-image: linear-gradient(to right, oklch(0.86 0.01 80 / .55) 1px, transparent 1px);
+  background-size: 96px 100%;
+}
